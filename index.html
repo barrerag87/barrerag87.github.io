@@ -32,18 +32,16 @@
         </font>
       </td>
 
-   <td width="70%" valign="top">
-  <b><font face="Arial">About Me</font></b><br>
-  <font face="Arial" size="2">
-    I hold a degree in Statistical Engineering from Universidad de Valparaíso and a Master's degree in Philosophy of Science from Universidad de Santiago de Chile (USACH).
-    <br><br>
-    I am currently pursuing a PhD in Statistics, where my research focuses on causal inference, multivariate methods, and the use of generalized additive models under the Rubin Causal Model framework.
-    <br><br>
-    My academic formation combines rigorous training in both applied statistical modeling and the philosophical foundations of science, enabling a multidisciplinary approach to research and teaching.
-  </font>
-</td>
-
-
+      <td width="70%" valign="top">
+        <b><font face="Arial">About Me</font></b><br>
+        <font face="Arial" size="2">
+          I hold a degree in Statistical Engineering from Universidad de Valparaíso and a Master's degree in Philosophy of Science from Universidad de Santiago de Chile (USACH).
+          <br><br>
+          I am currently pursuing a PhD in Statistics, where my research focuses on causal inference, multivariate methods, and the use of generalized additive models under the Rubin Causal Model framework.
+          <br><br>
+          My academic formation combines rigorous training in both applied statistical modeling and the philosophical foundations of science, enabling a multidisciplinary approach to research and teaching.
+        </font>
+        <br><br>
         <b><font face="Arial">Publications & Teaching</font></b><br>
         <font face="Arial" size="2">
         - Instructor at Universidad de Valparaíso and Pontificia Universidad Católica de Valparaíso.<br>
@@ -58,20 +56,20 @@
     <font face="Courier New" size="2">Last updated: May 2025</font>
   </center>
 
-  <!-- Logo DVD rebotando -->
-  <canvas id="dvd" width="800" height="600" style="display:block;margin:auto;border:2px solid white;"></canvas>
+  <!-- Logo DVD bouncing -->
+  <canvas id="dvd" width="800" height="600" style="display:block;margin:auto;border:2px solid black;"></canvas>
 
   <script type="text/javascript">
     var canvas = document.getElementById("dvd");
     var ctx = canvas.getContext("2d");
 
     var logo = new Image();
-    logo.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/DVD_video_logo.svg/200px-DVD_video_logo.svg.png";
+    logo.src = "https://upload.wikimedia.org/wikipedia/commons/9/98/DVD_logo.svg"; // Imagen original DVD
 
     var x = 100;
     var y = 100;
-    var dx = 2;
-    var dy = 2;
+    var dx = 1.5;
+    var dy = 1.5;
     var w = 100;
     var h = 50;
 
