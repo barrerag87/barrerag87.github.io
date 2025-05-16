@@ -1,91 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Rodrigo Barrera - Academic Profile</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1, h3 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    hr {
+      width: 80%;
+      margin: 20px auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    td {
+      vertical-align: top;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    td:first-child {
+      background-color: #f0f0f0;
+      width: 30%;
+    }
+
+    .footer {
+      text-align: center;
+      font-family: monospace;
+      margin-top: 40px;
+      color: #555;
+    }
+
+    /* DVD floating logo above everything */
+    #dvd-logo {
+      position: fixed;
+      top: 100px;
+      left: 100px;
+      width: 80px;
+      height: 40px;
+      z-index: 9999;
+      pointer-events: none;
+    }
+  </style>
 </head>
-<body bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080">
+<body>
 
-  <center>
-    <h1><font face="Times New Roman">Rodrigo Barrera</font></h1>
-    <h3><font face="Courier New">PhD Candidate in Statistics</font></h3>
-    <hr width="80%">
-  </center>
+<img id="dvd-logo" src="https://upload.wikimedia.org/wikipedia/commons/9/98/DVD_logo.svg" alt="DVD Logo">
 
-  <table width="90%" align="center" border="1" cellpadding="10">
+<div class="container">
+  <h1>Rodrigo Barrera</h1>
+  <h3>PhD Candidate in Statistics</h3>
+  <hr>
+
+  <table>
     <tr>
-      <td width="30%" valign="top" bgcolor="#E0E0E0">
-        <b><font face="Arial">Contact</font></b><br>
-        <font face="Arial" size="2">
+      <td>
+        <strong>Contact</strong><br>
         Universidad de Valparaíso<br>
         Facultad de Ciencias<br>
         Email: ribg1987@proton.me<br>
-        GitHub: <a href="https://github.com/barrerag87">barrerag87</a><br>
-        </font>
-        <br><br>
+        GitHub: <a href="https://github.com/barrerag87">barrerag87</a><br><br>
 
-        <b><font face="Arial">Research Interests</font></b><br>
-        <font face="Arial" size="2">
+        <strong>Research Interests</strong><br>
         - Causal inference<br>
         - Statistical computing<br>
         - Machine learning<br>
         - Mathematical logic<br>
-        </font>
       </td>
 
-      <td width="70%" valign="top">
-        <b><font face="Arial">About Me</font></b><br>
-        <font face="Arial" size="2">
-          I hold a degree in Statistical Engineering from Universidad de Valparaíso and a Master's degree in Philosophy of Science from Universidad de Santiago de Chile (USACH).
-          <br><br>
-          I am currently pursuing a PhD in Statistics, where my research focuses on causal inference, multivariate methods, and the use of generalized additive models under the Rubin Causal Model framework.
-          <br><br>
-          My academic formation combines rigorous training in both applied statistical modeling and the philosophical foundations of science, enabling a multidisciplinary approach to research and teaching.
-        </font>
-        <br><br>
-        <b><font face="Arial">Publications & Teaching</font></b><br>
-        <font face="Arial" size="2">
+      <td>
+        <strong>About Me</strong><br>
+        I hold a degree in Statistical Engineering from Universidad de Valparaíso and a Master's degree in Philosophy of Science from Universidad de Santiago de Chile (USACH).<br><br>
+        I am currently pursuing a PhD in Statistics, where my research focuses on causal inference, multivariate methods, and the use of generalized additive models under the Rubin Causal Model framework.<br><br>
+        My academic formation combines rigorous training in both applied statistical modeling and the philosophical foundations of science, enabling a multidisciplinary approach to research and teaching.<br><br>
+
+        <strong>Publications & Teaching</strong><br>
         - Instructor at Universidad de Valparaíso and Pontificia Universidad Católica de Valparaíso.<br>
         - Research on educational interventions, multivariate analysis, and logic.<br>
-        </font>
       </td>
     </tr>
   </table>
 
-  <center>
-    <hr width="80%">
-    <font face="Courier New" size="2">Last updated: May 2025</font>
-  </center>
+  <div class="footer">
+    Last updated: May 2025
+  </div>
+</div>
 
-  <!-- Logo DVD bouncing -->
-  <canvas id="dvd" width="800" height="600" style="display:block;margin:auto;border:2px solid black;"></canvas>
+<script>
+  const dvd = document.getElementById("dvd-logo");
 
-  <script type="text/javascript">
-    var canvas = document.getElementById("dvd");
-    var ctx = canvas.getContext("2d");
+  let x = 100;
+  let y = 100;
+  let dx = 2;
+  let dy = 2;
+  const w = dvd.offsetWidth;
+  const h = dvd.offsetHeight;
 
-    var logo = new Image();
-    logo.src = "https://upload.wikimedia.org/wikipedia/commons/9/98/DVD_logo.svg"; // Imagen original DVD
+  function move() {
+    const winW = window.innerWidth;
+    const winH = window.innerHeight;
 
-    var x = 100;
-    var y = 100;
-    var dx = 1.5;
-    var dy = 1.5;
-    var w = 100;
-    var h = 50;
+    x += dx;
+    y += dy;
 
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(logo, x, y, w, h);
+    if (x + w > winW || x < 0) dx = -dx;
+    if (y + h > winH || y < 0) dy = -dy;
 
-      if (x + dx < 0 || x + dx + w > canvas.width) dx = -dx;
-      if (y + dy < 0 || y + dy + h > canvas.height) dy = -dy;
+    dvd.style.left = x + "px";
+    dvd.style.top = y + "px";
 
-      x += dx;
-      y += dy;
-    }
+    requestAnimationFrame(move);
+  }
 
-    setInterval(draw, 10);
-  </script>
+  requestAnimationFrame(move);
+</script>
 
 </body>
 </html>
