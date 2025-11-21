@@ -11,9 +11,9 @@
 
     <style>
         :root {
-            --primary: #1a2a3a;      /* Azul oscuro académico */
-            --accent: #c0392b;       /* Rojo ladrillo sutil para contrastes */
-            --gold: #d4af37;         /* Dorado suave para detalles */
+            --primary: #1a2a3a;       /* Azul oscuro académico */
+            --accent: #c0392b;        /* Rojo ladrillo sutil para contrastes */
+            --gold: #d4af37;          /* Dorado suave para detalles */
             --bg-body: #f0f2f5;
             --bg-card: #ffffff;
             --text-main: #2c3e50;
@@ -45,7 +45,7 @@
             min-height: 90vh;
         }
 
-        /* Sidebar Izquierdo - Estilo Columna Vertebral */
+        /* Sidebar Izquierdo */
         aside {
             background-color: var(--primary);
             color: white;
@@ -120,6 +120,58 @@
             padding: 4rem;
         }
 
+        /* NUEVOS ESTILOS PARA PESTAÑAS DE NAVEGACIÓN */
+        .top-nav {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 3rem;
+            padding-bottom: 0;
+        }
+
+        .nav-tab {
+            padding: 0.8rem 1.5rem;
+            margin-right: 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-tab:hover {
+            color: var(--primary);
+        }
+
+        .nav-tab.active {
+            color: var(--primary);
+        }
+
+        /* Línea animada bajo la pestaña */
+        .nav-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; /* Se alinea con el borde inferior del contenedor */
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-tab:hover::after,
+        .nav-tab.active::after {
+            transform: scaleX(1);
+        }
+
+        /* Títulos de Sección */
         h2.section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
@@ -169,7 +221,7 @@
             display: block;
         }
 
-        /* Botones de Cursos (Enlaces) */
+        /* Botones de Cursos */
         .course-link {
             display: flex;
             justify-content: space-between;
@@ -273,6 +325,11 @@
             main {
                 padding: 2rem;
             }
+
+            .top-nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -316,6 +373,13 @@
 
     <main>
         
+        <nav class="top-nav">
+            <a href="index.html" class="nav-tab active">Home</a>
+            <a href="blog.html" class="nav-tab">Blog</a>
+            <a href="ponencias.html" class="nav-tab">Ponencias</a>
+            <a href="posters.html" class="nav-tab">Posters</a>
+        </nav>
+
         <section style="margin-bottom: 4rem;">
             <h2 class="section-title">About Me</h2>
             <p class="bio">
@@ -370,12 +434,10 @@
                 <div class="pub-item">
                     <h4 class="pub-title">From Hypothesis to Conclusion: The Essential Role of Statistics in Science. </h4>
                     <div class="pub-meta">
-                        <strong>Henríquez-Roldán, C. F.; Bangdiwala, S. I.; Barrera-Guajardo, R. I.; Bustos-Rubilar, A. S. <em>Research in Statistics</em>.
+                        <strong>Henríquez-Roldán, C. F.; Bangdiwala, S. I.; Barrera-Guajardo, R. I.; Bustos-Rubilar, A. S.</strong> <em>Research in Statistics</em>.
                     </div>
                     <a href="#" class="pub-link">View Paper (PDF)</a>
                 </div>
-
-             
             </div>
         </section>
 
