@@ -1,1 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Cálculo UCM | Evaluaciones y Material</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
+    <style>
+        :root {
+            --primary: #1a2a3a;
+            --accent: #c0392b;
+            --gold: #d4af37;
+            --bg-body: #f0f2f5;
+            --bg-card: #ffffff;
+            --text-main: #2c3e50;
+            --text-light: #7f8c8d;
+            --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--bg-card);
+            box-shadow: var(--shadow-soft);
+            border-radius: 8px;
+            padding: 40px;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        h3 {
+            font-weight: 400;
+            color: var(--text-light);
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* Títulos de Sección */
+        h2.section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-left: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Tarjetas de Archivos */
+        .file-list {
+            display: grid;
+            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .file-card {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+        }
+
+        .file-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .file-card p {
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .download-link {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .download-link:hover {
+            color: #a02018; /* Tono más oscuro de accent */
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Pre-Cálculo</h1>
+        <h3>Universidad Católica del Maule | Código: UCM-450</h3>
+    </header>
+
+    <section>
+        <h2 class="section-title">Controles (Quizzes)</h2>
+        <div class="file-list">
+            
+            <div class="file-card">
+                <p>Control 1: Fundamentos de Álgebra</p>
+                <span style="font-size: 0.85rem; color: var(--text-light);">Publicado: 15/09/2025</span><br>
+                <a href="archivos/ucm/precalculo/control_1.pdf" target="_blank" class="download-link">
+                    📄 Descargar (PDF)
+                </a>
+            </div>
+
+            <div class="file-card">
+                <p>Control 2: Funciones Trigonométricas</p>
+                <span style="font-size: 0.85rem; color: var(--text-light);">Publicado: 06/10/2025</span><br>
+                <a href="archivos/ucm/precalculo/control_2.pdf" target="_blank" class="download-link">
+                    📄 Descargar (PDF)
+                </a>
+            </div>
+
+             </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Pruebas (Exámenes Parciales)</h2>
+        <div class="file-list">
+            
+            <div class="file-card">
+                <p>Prueba 1: Lógica y Conjuntos</p>
+                <span style="font-size: 0.85rem; color: var(--text-light);">Publicado: 29/09/2025</span><br>
+                <a href="archivos/ucm/precalculo/prueba_1.pdf" target="_blank" class="download-link">
+                    📄 Descargar (PDF)
+                </a>
+            </div>
+
+            <div class="file-card">
+                <p>Prueba 2: Geometría Analítica</p>
+                <span style="font-size: 0.85rem; color: var(--text-light);">Publicado: 27/10/2025</span><br>
+                <a href="archivos/ucm/precalculo/prueba_2.pdf" target="_blank" class="download-link">
+                    📄 Descargar (PDF)
+                </a>
+            </div>
+             </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Material Adicional y Guías</h2>
+        <div class="file-list">
+            
+            <div class="file-card">
+                <p>Guía de Ejercicios: Introducción a Límites</p>
+                <span style="font-size: 0.85rem; color: var(--text-light);">Publicado: 03/11/2025</span><br>
+                <a href="archivos/ucm/precalculo/guia_limites.pdf" target="_blank" class="download-link">
+                    📄 Descargar (PDF)
+                </a>
+            </div>
+            
+        </div>
+    </section>
+    
+    <p style="text-align: center; margin-top: 50px; font-size: 0.85rem; color: var(--text-light);">
+        <a href="../index.html" style="color: var(--text-light); text-decoration: none;">← Volver al Perfil Principal</a>
+    </p>
+</div>
+
+</body>
+</html>
