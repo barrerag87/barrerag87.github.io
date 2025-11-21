@@ -1,191 +1,335 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Rodrigo Barrera - Academic Profile</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #000000;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Barrera - Perfil Académico</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #fdfdfd;
+            --text-color: #333;
+            --light-gray: #f4f4f4;
+            --border-color: #e0e0e0;
+            --spacing: 2rem;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    h1, h3 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-    hr {
-      width: 80%;
-      margin: 20px auto;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing);
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
+        /* Header */
+        header {
+            text-align: center;
+            padding-bottom: var(--spacing);
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    td {
-      vertical-align: top;
-      padding: 20px;
-      border: 1px solid #ccc;
-    }
+        h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+        }
 
-    td:first-child {
-      background-color: #f0f0f0;
-      width: 30%;
-    }
+        h3 {
+            margin: 10px 0 0 0;
+            font-weight: 400;
+            color: #666;
+            font-size: 1.2rem;
+        }
 
-    .footer {
-      text-align: center;
-      font-family: monospace;
-      margin-top: 40px;
-      color: #555;
-    }
+        /* Layout Principal */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
 
-    #dvd-logo {
-      position: fixed;
-      top: 100px;
-      left: 100px;
-      width: 80px;
-      height: 40px;
-      z-index: 9999;
-      pointer-events: none;
-    }
-  </style>
+        @media (min-width: 768px) {
+            .main-grid {
+                grid-template-columns: 280px 1fr; /* Sidebar + Contenido */
+            }
+        }
+
+        /* Sidebar (Izquierda en escritorio) */
+        .sidebar section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-box {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .sidebar-title {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            display: block;
+        }
+
+        .contact-info a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-color);
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        ul.plain-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.plain-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        /* Contenido Principal (Derecha en escritorio) */
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+            margin-left: 1rem;
+        }
+
+        /* Grid para Docencia y Recursos */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 4px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .card strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .resource-list a {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .resource-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Botón del Poster */
+        .poster-cta {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 2rem;
+            border: 1px dashed var(--accent-color);
+            border-radius: 8px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: #888;
+            font-size: 0.85rem;
+        }
+    </style>
 </head>
 <body>
 
-<img id="dvd-logo" src="dvd.svg" alt="DVD Logo">
-
 <div class="container">
-  <h1>Rodrigo Barrera</h1>
-  <h3>PhD Candidate in Statistics</h3>
-  <hr>
+    
+    <header>
+        <h1>Rodrigo Barrera</h1>
+        <h3>PhD Candidate in Statistics</h3>
+    </header>
 
-  <table>
-    <tr>
-      <td>
-        <strong>Contact</strong><br>
-        Universidad de Valparaíso<br>
-        Facultad de Ciencias<br>
-        Email: ribg1987@proton.me<br>
-        GitHub: <a href="https://github.com/barrerag87">barrerag87</a><br><br>
+    <div class="main-grid">
+        
+        <aside class="sidebar">
+            
+            <section class="sidebar-box contact-info">
+                <span class="sidebar-title">Contact</span>
+                <p>
+                    <strong>Universidad de Valparaíso</strong><br>
+                    Facultad de Ciencias
+                </p>
+                <p>
+                    Email: <a href="mailto:ribg1987@proton.me">ribg1987@proton.me</a><br>
+                    GitHub: <a href="https://github.com/barrerag87" target="_blank">barrerag87</a>
+                </p>
+            </section>
 
-        <strong>Research Interests</strong><br>
-        - Causal inference<br>
-        - Statistical computing<br>
-        - Machine learning<br>
-        - Mathematical logic<br>
-      </td>
+            <section>
+                <span class="sidebar-title">Research Interests</span>
+                <ul class="plain-list">
+                    <li>Causal inference</li>
+                    <li>Statistical computing</li>
+                    <li>Machine learning</li>
+                    <li>Mathematical logic</li>
+                </ul>
+            </section>
 
-      <td>
-        <strong>About Me</strong><br>
-        I hold a degree in Statistical Engineering from Universidad de Valparaíso and a Master's degree in Philosophy of Science from Universidad de Santiago de Chile (USACH).<br><br>
-        I am currently pursuing a PhD in Statistics, where my research focuses on causal inference, multivariate methods, and the use of generalized additive models under the Rubin Causal Model framework.<br><br>
-        My academic formation combines rigorous training in both applied statistical modeling and the philosophical foundations of science, enabling a multidisciplinary approach to research and teaching.<br><br>
+        </aside>
 
-        <strong>Publications & Teaching</strong><br>
-        - Instructor at Universidad de Valparaíso and Pontificia Universidad Católica de Valparaíso.<br>
-        - Research on educational interventions, multivariate analysis, and logic.<br>
-      </td>
-    </tr>
-  </table>
+        <main>
+            
+            <section class="content-section">
+                <h2 class="section-title">About Me</h2>
+                <p>
+                    I hold a degree in Statistical Engineering from Universidad de Valparaíso and a Master's degree in Philosophy of Science from Universidad de Santiago de Chile (USACH).
+                </p>
+                <p>
+                    I am currently pursuing a PhD in Statistics, where my research focuses on causal inference, multivariate methods, and the use of generalized additive models under the Rubin Causal Model framework.
+                </p>
+                <p>
+                    My academic formation combines rigorous training in both applied statistical modeling and the philosophical foundations of science, enabling a multidisciplinary approach to research and teaching.
+                </p>
+                
+                <div style="margin-top: 1.5rem; padding: 1rem; background-color: #f9f9f9; border-left: 4px solid var(--accent-color);">
+                    <strong>Publications & Teaching Highlights</strong><br>
+                    Instructor at Universidad de Valparaíso and Pontificia Universidad Católica de Valparaíso. Research on educational interventions, multivariate analysis, and logic.
+                </div>
+            </section>
 
-  <hr>
+            <section class="content-section">
+                <h2 class="section-title">Now Teaching</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <strong>Universidad de Valparaíso</strong>
+                        <ul class="plain-list">
+                            <li>Econometría</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <strong>Universidad Católica del Maule</strong>
+                        <ul class="plain-list">
+                            <li>Pre-Cálculo</li>
+                            <li>Estadística Computacional</li>
+                            <li>Métodos Numéricos</li>
+                            <li>Evaluación de proyectos</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
 
-  <h3>Now Teaching</h3>
-  <table>
-    <tr>
-      <td>
-        <strong>Universidad de Valparaíso</strong><br><br>
-        - Econometría<br>
-      </td>
-      <td>
-        <strong>Universidad Católica del Maule</strong><br><br>
-        - Pre-Cálculo<br>
-        - Estadística Computacional<br>
-        - Métodos Numéricos<br>
-        - Evaluación de proyectos<br>
-      </td>
-    </tr>
-  </table>
+            <section class="content-section">
+                <h2 class="section-title">Academic Resources</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <strong>Classes</strong>
+                        <div class="resource-list">
+                            <a href="#">Lecture Notes: Inference</a>
+                            <a href="#">Slides: Multivariate Analysis</a>
+                            <a href="#">Workshops: R for Stats</a>
+                            <a href="#">Exam Solutions</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <strong>Codes</strong>
+                        <div class="resource-list">
+                            <a href="#">R Scripts: Causal Models</a>
+                            <a href="#">Python: ML Algorithms</a>
+                            <a href="#">LaTeX Templates</a>
+                            <a href="#">Simulation Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-  <hr>
+            <section class="content-section">
+                <div class="poster-cta">
+                    <p>Check out my latest collaborative work.</p>
+                    <a href="assets/pdf/Poster 1.pdf" target="_blank" class="btn">
+                        View Research Poster (PDF)
+                    </a>
+                </div>
+            </section>
 
-  <h3>Academic Resources</h3>
-  <table>
-    <tr>
-      <td>
-        <strong>Classes</strong><br><br>
-        - <a href="#">Lecture Notes: Inference</a><br>
-        - <a href="#">Slides: Multivariate Analysis</a><br>
-        - <a href="#">Workshops: R for Stats</a><br>
-        - <a href="#">Exam Solutions</a><br>
-      </td>
-      <td>
-        <strong>Codes</strong><br><br>
-        - <a href="#">R Scripts: Causal Models</a><br>
-        - <a href="#">Python: ML Algorithms</a><br>
-        - <a href="#">LaTeX Templates</a><br>
-        - <a href="#">Simulation Projects</a><br>
-      </td>
-    </tr>
-  </table>
+        </main>
+    </div>
 
-  <hr>
+    <footer class="footer">
+        Last updated: Nov 2025 | Rodrigo Barrera
+    </footer>
 
-  <h3>Research Poster</h3>
-  <div style="text-align:center; margin: 20px 0;">
-    <p>
-      Collaborative poster.<br>
-      <a href="assets/pdf/Poster 1.pdf" target="_blank" style="text-decoration:none; color:#0066cc;">
-        📄 View Poster (PDF)
-      </a>
-    </p>
-  </div>
-
-  <div class="footer">
-    Last updated: Nov 2025
-  </div>
 </div>
-
-<script>
-  const dvd = document.getElementById("dvd-logo");
-
-  let x = 100;
-  let y = 100;
-  let dx = 2;
-  let dy = 2;
-  const w = dvd.offsetWidth;
-  const h = dvd.offsetHeight;
-
-  function move() {
-    const winW = window.innerWidth;
-    const winH = window.innerHeight;
-
-    x += dx;
-    y += dy;
-
-    if (x + w > winW || x < 0) dx = -dx;
-    if (y + h > winH || y < 0) dy = -dy;
-
-    dvd.style.left = x + "px";
-    dvd.style.top = y + "px";
-
-    requestAnimationFrame(move);
-  }
-
-  requestAnimationFrame(move);
-</script>
 
 </body>
 </html>
