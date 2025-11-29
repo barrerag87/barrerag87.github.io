@@ -41,7 +41,7 @@
             grid-template-columns: 300px 1fr; /* Sidebar fijo, contenido fluido */
             box-shadow: var(--shadow-soft);
             border-radius: 8px;
-            overflow: hidden;
+            overflow: visible; /* Cambiado de hidden a visible para evitar cortes si el tooltip sale mucho */
             min-height: 90vh;
             position: relative; /* base de stacking */
             z-index: 0;
@@ -56,6 +56,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
         }
 
         aside::before {
@@ -242,7 +244,7 @@
             transition: var(--transition);
             position: relative;
             overflow: visible; /* permite ver el tooltip */
-            z-index: 50;       /* por encima de otros bloques dentro de main */
+            z-index: 1; /* Nivel base */
         }
 
         /* Barra vertical animada en el borde izquierdo del curso */
@@ -262,6 +264,7 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border-color: var(--primary);
+            z-index: 100; /* Corrección crítica: eleva el elemento sobre los demás al pasar el mouse */
         }
 
         .course-link:hover::before {
@@ -292,7 +295,7 @@
             pointer-events: none;
             transform: translateY(6px);
             transition: opacity 0.25s ease, transform 0.25s ease;
-            z-index: 9999; /* se superpone a todo dentro de la tarjeta */
+            z-index: 9999; 
         }
 
         .course-link:hover::after {
@@ -357,6 +360,7 @@
             
             aside {
                 padding: 3rem 2rem 2rem 2rem;
+                border-radius: 0;
             }
 
             main {
@@ -436,7 +440,7 @@
             <div class="teaching-grid">
                 <div class="university-group">
                     <span class="uni-name">Universidad de Valparaíso</span>
-                    <a href="courses/uv-econometria.html"
+                    <a href="courses/uv-econometria.html" 
                        class="course-link"
                        data-description="Econometric methods for analyzing observational data, including regression, time series and causal inference tools with an applied focus.">
                         <span>Econometría</span>
@@ -447,28 +451,28 @@
                 <div class="university-group">
                     <span class="uni-name">Universidad Católica del Maule</span>
 
-                    <a href="courses/ucm-precalculo.html"
+                    <a href="courses/ucm-precalculo.html" 
                        class="course-link"
                        data-description="Foundations of functions, limits and algebraic manipulation to prepare students for university-level calculus.">
                         <span>Pre-Cálculo</span>
                         <span class="course-arrow">→</span>
                     </a>
 
-                    <a href="courses/ucm-estadistica.html"
+                    <a href="courses/ucm-estadistica.html" 
                        class="course-link"
                        data-description="Introduction to computational statistics using R and Python, with emphasis on simulation and reproducible workflows.">
                         <span>Estadística Computacional</span>
                         <span class="course-arrow">→</span>
                     </a>
 
-                    <a href="courses/ucm-metodos.html"
+                    <a href="courses/ucm-metodos.html" 
                        class="course-link"
                        data-description="Numerical methods for solving linear systems, optimization problems and equations, with applications in data analysis.">
                         <span>Métodos Numéricos</span>
                         <span class="course-arrow">→</span>
                     </a>
 
-                    <a href="courses/ucm-proyectos.html"
+                    <a href="courses/ucm-proyectos.html" 
                        class="course-link"
                        data-description="Project evaluation and financial decisions, including cash flow analysis, discount rates and risk in real-world contexts.">
                         <span>Evaluación de Proyectos</span>
@@ -498,14 +502,12 @@
                 <div style="flex: 1; min-width: 200px;">
                     <h4 style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 1rem;">Lecture Notes</h4>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <!-- Enlaces futuros a apuntes -->
-                    </div>
+                        </div>
                 </div>
                 <div style="flex: 1; min-width: 200px;">
                     <h4 style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 1rem;">Code Repositories</h4>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <!-- Enlaces futuros a repositorios -->
-                    </div>
+                        </div>
                 </div>
             </div>
         </section>
