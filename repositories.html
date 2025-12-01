@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Repositories | Rodrigo Barrera</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a2a3a;
+            --accent: #c0392b;
+            --gold: #d4af37;
+            --bg-body: #f0f2f5;
+            --bg-card: #ffffff;
+            --text-main: #2c3e50;
+            --text-light: #7f8c8d;
+            --colab-orange: #e67e22;
+            --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            background-image: linear-gradient(to bottom right, #eef2f3, #eef2f3); 
+        }
+
+        /* Layout Principal */
+        .wrapper {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: var(--bg-card);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            box-shadow: var(--shadow-soft);
+            border-radius: 8px;
+            min-height: 90vh;
+            position: relative;
+        }
+
+        /* Sidebar */
+        aside {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        aside::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: var(--gold);
+        }
+
+        .profile-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .profile-header h3 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 1.5rem;
+        }
+
+        .info-block { margin-top: 2rem; }
+
+        .info-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-content a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-content a:hover { opacity: 1; text-decoration: underline; }
+        .social-links { margin-top: auto; padding-top: 2rem; }
+
+        /* Contenido Principal */
+        main { padding: 4rem; }
+
+        /* Navegación */
+        .top-nav {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 3rem;
+            padding-bottom: 0;
+        }
+
+        .nav-tab {
+            padding: 0.8rem 1.5rem;
+            margin-right: 1rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-tab:hover, .nav-tab.active { color: var(--primary); }
+
+        .nav-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-tab:hover::after, .nav-tab.active::after { transform: scaleX(1); }
+
+        /* Títulos */
+        h2.section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2.section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        /* --- ESTILOS DE CATEGORÍAS Y LISTA --- */
+        
+        .category-block {
+            margin-bottom: 3.5rem;
+        }
+
+        .category-header {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .repo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .repo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f2f5;
+            transition: background-color 0.2s;
+        }
+
+        .repo-item:last-child {
+            border-bottom: none;
+        }
+
+        .repo-item:hover {
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .repo-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .colab-btn {
+            display: inline-block;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--colab-orange);
+            border: 1px solid var(--colab-orange);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .colab-btn:hover {
+            background-color: var(--colab-orange);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(230, 126, 34, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .wrapper { grid-template-columns: 1fr; margin: 0; min-height: 100vh; border-radius: 0; }
+            aside { padding: 3rem 2rem; border-radius: 0; }
+            main { padding: 2rem; }
+            .top-nav { flex-wrap: wrap; gap: 10px; }
+            .repo-item { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+            .colab-btn { width: 100%; text-align: center; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    
+    <aside>
+        <div class="profile-header">
+            <h1>Rodrigo<br>Barrera</h1>
+            <h3>PhD Candidate in Statistics</h3>
+            
+            <div class="info-block">
+                <span class="info-label">Affiliation</span>
+                <p style="margin:0; font-size:0.95rem;">
+                    Universidad de Valparaíso<br>
+                    Facultad de Ciencias
+                </p>
+            </div>
+
+            <div class="info-block">
+                <span class="info-label">Research Interests</span>
+                <p style="margin:0; font-size:0.9rem; line-height:1.6;">
+                    • Causal Inference<br>
+                    • Statistical Computing<br>
+                    • Machine Learning<br>
+                    • Mathematical Logic
+                </p>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <span class="info-label">Contact</span>
+            <div class="info-content">
+                <a href="mailto:ribg1987@proton.me">ribg1987@proton.me</a>
+                <a href="https://github.com/barrerag87" target="_blank">github.com/barrerag87</a>
+            </div>
+            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 20px;">Updated: Nov 2025</p>
+        </div>
+    </aside>
+
+    <main>
+        
+        <nav class="top-nav">
+            <a href="index.html" class="nav-tab">Home</a>
+            <a href="blog.html" class="nav-tab">Blog</a>
+            <a href="ponencias.html" class="nav-tab">Ponencias</a>
+            <a href="assets/Poster 1.pdf" class="nav-tab">Posters</a>
+            <a href="repositories.html" class="nav-tab active">Code</a>
+        </nav>
+
+        <h2 class="section-title">Code Repositories</h2>
+
+        <div class="category-block">
+            <h3 class="category-header">Estadística Computacional</h3>
+            <ul class="repo-list">
+                <li class="repo-item">
+                    <span class="repo-name">Simulación de Monte Carlo y Bootstrap</span>
+                    <a href="https://colab.research.google.com/" target="_blank" class="colab-btn">Open in Colab</a>
+                </li>
+                <li class="repo-item">
+                    <span class="repo-name">Optimización Numérica (Newton-Raphson)</span>
+                    <a href="https://colab.research.google.com/" target="_blank" class="colab-btn">Open in Colab</a>
+                </li>
+                <li class="repo-item">
+                    <span class="repo-name">Generación de Variables Aleatorias</span>
+                    <a href="https://colab.research.google.com/" target="_blank" class="colab-btn">Open in Colab</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="category-block">
+            <h3 class="category-header">Machine Learning</h3>
+            <ul class="repo-list">
+                <li class="repo-item">
+                    <span class="repo-name">Modelos de Clasificación Supervisada</span>
+                    <a href="https://colab.research.google.com/" target="_blank" class="colab-btn">Open in Colab</a>
+                </li>
+                <li class="repo-item">
+                    <span class="repo-name">Redes Neuronales con PyTorch</span>
+                    <a href="https://colab.research.google.com/" target="_blank" class="colab-btn">Open in Colab</a>
+                </li>
+                <li class="repo-item">
+                    <span class="repo-name">Clustering: K-Means y Jerárquico</span>
+                    <a href="https://colab.research.google.com/" target="_blank" class="colab-btn">Open in Colab</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="category-block">
+            <h3 class="category-header">Inferencia Causal</h3>
+            <ul class="repo-list">
+                <li class="repo-item">
+                    <span class="repo-name">Propensity Score Matching</span>
+                    <a href="https://colab.research.google.com/" target="_blank" class="colab-btn">Open in Colab</a>
+                </li>
+                <li class="repo-item">
+                    <span class="repo-name">Instrumental Variables (IV) Analysis</span>
+                    <a href="https://colab.research.google.com/" target="_blank" class="colab-btn">Open in Colab</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="category-block">
+            <h3 class="category-header">Misceláneos</h3>
+            <ul class="repo-list">
+                <li class="repo-item">
+                    <span class="repo-name">Web Scraping de Datos Económicos</span>
+                    <a href="https://colab.research.google.com/" target="_blank" class="colab-btn">Open in Colab</a>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>
